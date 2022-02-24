@@ -1,0 +1,12 @@
+k=int(input())
+l1=(input().split())
+l=[int(e) for e in l1]
+d=1
+for i in range(len(l)):
+    for j in range(i,len(l)):
+        if l[i]+l[j]==k:
+            print("possible")
+            d=0
+            exit()
+if d!=0:
+    print("Notpossible")
