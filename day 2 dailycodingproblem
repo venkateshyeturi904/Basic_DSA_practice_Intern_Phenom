@@ -1,0 +1,8 @@
+l1=(input().split())
+l=[int(e) for e in l1]
+k=1
+for i in range(len(l)):
+    p=k*l[i]
+    k=p 
+l2=[p/t for t in l ]
+print(l2)
