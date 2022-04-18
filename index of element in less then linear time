@@ -1,0 +1,31 @@
+import java.util.*;
+class ArrayDemo {
+    public static void main(String[] args) {
+        int i=0;
+        int [] array = {2,8,10,13,18,25};
+        int middle = array[(array.length)/2];
+        System.out.println("Enter the search element");
+        Scanner s = new Scanner(System.in);
+        int search = s.nextInt();
+        if(search > middle )
+        {
+            for(i =0; i<array.length/2;i++)
+            {
+                if(array[array.length-1-i]==search)
+                {
+                    System.out.println( i);
+                }
+            }
+            
+        }
+        if(search < middle)
+        {
+            for(i=0;i<array.length;i++)
+            {
+                if(array[i]==search)
+                {
+                    System.out.println(i);
+                }
+            }
+            
+        }
