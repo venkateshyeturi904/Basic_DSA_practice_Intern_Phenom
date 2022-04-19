@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class DividingString
+{
+    public static void main(String args[])
+    {
+        String temporary = "";
+        Scanner scanner = new Scanner (System.in);
+        System.out.println("Enter the input string");
+        String inputString = scanner.nextLine();
+        System.out.println("Enter the k value");
+        int k = scanner.nextInt();
+        List<String> listOfStrings = new ArrayList<>();
+        String [] list  = (inputString.split(" "));
+        int j=0;
+        String lastTemporary = null;
+
+        for(int i =0 ; i<list.length; i=i+j)
+        {
+            if(list[i].length()<k)
+            {
+                temporary=list[i];
+                for(j=i; j<list.length;j++)
+                {
+                    lastTemporary = temporary;
+                    temporary = list[j] + " " + temporary;
+                    if(temporary.length()>=k)
+                    {
+                        break;
+                    }
+                }
+                if(temporary.length()<=k)
+                {
+                    listOfStrings.add(temporary);
+                }
+                else
+                    listOfStrings.add(lastTemporary);
+            }
+            
+        }
+        for(String s : listOfStrings)
+        {
+            System.out.println(s);
+        }
+
+
+//        for(int i=0; i<inputString.length() ; i+=k )
+//        {
+//            if(inputString.charAt(k)==' ')
+//            {
+//                for(int j = i+k ;  ; j--)
+//                {
+//                    if(inputString.charAt(j)==' ')
+//                    {
+//                        listOfStrings.add()
+//                    }
+//                }
+//            }
+//
+//        }
+
+
+    }
+}
