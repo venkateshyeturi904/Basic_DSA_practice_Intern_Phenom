@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class PrefixMatch{
+    public static void main(String args[]){
+        String search = "de";
+        List<String> output = new ArrayList<String>();
+        boolean matched = true;
+        String [] list = {"deer","deloitte","data","deeper","dell","deque","deel","deep","deer"};
+        for(int i=0;i<list.length;i++){
+            matched=true;
+            for(int j=0;j<search.length();j++){
+                if(list[i].charAt(j)==search.charAt(j)){
+                    
+                    
+                }
+                else{
+                    matched = false;
+                
+                }
+            }
+            if(matched == true){
+                output.add(list[i]);
+            }
+        }
+        for(String s : output){
+            System.out.println(s);
+        }
+        
+    }
+}
