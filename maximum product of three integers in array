@@ -1,0 +1,11 @@
+import java.lang.Math;
+import java.util.*;
+public class MaxProduct{
+    public static void main(String args[]){
+        int [] list = {-100,-10,8,-1,67,5,4,23};
+        Arrays.sort(list);
+        int product1 = list[0]*list[1]*list[list.length-1];
+        int product2 = list[list.length-1]*list[list.length-2]*list[list.length-3];
+        System.out.println(Math.max(product1,product2));
+    }
+}
