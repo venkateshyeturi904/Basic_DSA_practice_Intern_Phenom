@@ -1,0 +1,76 @@
+package hashMapJSON;
+
+import java.util.*;
+
+
+public class JSONDemo {
+    public static void main (String[] args) {
+
+        Map<Object,Object> map = new LinkedHashMap<>();
+        map.put("Name",new String("Venkatesh"));
+        map.put("college",new String("JNTU"));
+
+        List<String> skillSet = new ArrayList<>();
+        skillSet.add("js");
+        skillSet.add("java");
+        map.put("skills",skillSet);
+
+//      List<Map<String,String>> addressValues = new ArrayList<>();
+
+        LinkedHashMap<Object,Object> map1 = new LinkedHashMap<>();
+        map1.put("Street","college road");
+// 		addressValues.add(map1);
+        //map.put("address",map1);
+
+        Map<Object,Object> innerAddressValues = new LinkedHashMap<>();
+        innerAddressValues.put("pincode",new String("500085"));
+
+
+        List<String> tagValues = new ArrayList<>();
+        tagValues.add("food street");
+        tagValues.add("tech park");
+// 		map.put("tags",tagValues);
+        innerAddressValues.put("tags",tagValues);
+
+        map1.put("inner address",innerAddressValues);
+        map.put("address",map1);
+
+        boolean isMajor= true;
+        map.put("isMajor",isMajor);
+        System.out.println(map.getClass());
+
+
+// 		for(String s : map.keySet()){
+// 		    if(!map.get(s).getClass().charAt(Map.get(s).getClass().length()).equals('p')){
+// 		       System.out.println(s+"->"+map.get(s));
+// 		    }
+// 		    else{
+// 		        print();
+// 		    }
+// 		}
+// 		 for(String s : o.keySet()){
+// 	        System.out.println(s+"->"+map.get(s));
+// 		 }
+        print(map);
+
+    }
+    public static void print(Map<Object,Object> o){
+        for(Object entry : o.keySet()){
+            //System.out.println(entry instanceof HashMap);
+            if(o.get(entry) instanceof Map)
+            {
+                //Map<Object,Object> entry1 = (Map)entry;
+               // System.out.println("in if");
+                HashMap y = (HashMap<Object, Object>)(o.get(entry));
+                //System.out.println(y);
+                print(y);
+            }
+            else
+            {
+                System.out.println(entry+"->"+o.get(entry));
+            }
+
+        }
+
+    }
+}
