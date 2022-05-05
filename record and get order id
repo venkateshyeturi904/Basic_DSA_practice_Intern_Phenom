@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String args[]){
+        List<Integer> list = new ArrayList<>();
+        list.add(23421);
+        list.add(23146);
+        list.add(9987);
+        list.add(432);
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Enter 1 if you want to record a new order id 2 to get last ith order id"); 
+        int input=sc.nextInt();
+        // (sc.nextInt()==1)?(record(sc.nextInt(),list)):(System.out.println(get_last(sc.nextInt(),list)));
+        if(input==1){
+            System.out.println("enter value to be added");
+            int add = sc.nextInt();
+            record(add,list);
+        }
+        else{
+            System.out.println("enter i value");
+            int i=sc.nextInt();
+            System.out.println(get_last(i,list));
+        }
+        
+    }
+    public static void record(int a,List<Integer> l){
+        l.add(a);
+    }
+    public static int get_last(int i,List<Integer> l){
+        int listSize = l.size();
+        int result = l.get(listSize-1-i);
+        return result;
+    }
+}
