@@ -1,0 +1,35 @@
+/*Compute the running median of a sequence of numbers. That is, given a stream of numbers, print out the median of the list so far on each new element.
+
+Recall that the median of an even-numbered list is the average of the two middle numbers.
+
+For example, given the sequence [2, 1, 5, 7, 2, 0, 5], your algorithm should print out:
+*/
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        List<Integer> array =  new ArrayList<>();
+        array.add(2);
+        array.add(1);
+        array.add(5);
+        array.add(7);
+        array.add(2);
+        array.add(0);
+        array.add(5);
+        List<Integer> array2 = new ArrayList<>();
+        for(int i=0;i<array.size();i++){
+            array2.add(array.get(i));
+            System.out.println(median(array2));
+        }
+    }
+    public static float median(List<Integer> array){
+        int size = array.size();
+        Collections.sort(array);
+        if(size%2!=0){
+            return array.get(size/2);
+        }
+        else{
+            return ((array.get((int)((size-1)/2))  + array.get(size/2))/2f)      ;
+        }
+        
+    }
+}
