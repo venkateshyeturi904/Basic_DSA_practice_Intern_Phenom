@@ -1,0 +1,33 @@
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Main {
+    public static void main(String args[]) {
+        LinkedHashMap<Character, Character> map = new LinkedHashMap<>();
+        map.put('a', 'b');
+        map.put('b', 'c'); 
+        map.put('c', 'd'); 
+        map.put('e', 'f');
+        map.put('k','z');
+        int bonus=10;
+        ArrayList<Character> list = new ArrayList<>(map.keySet());
+        for( Character c : map.keySet()){
+            System.out.println(c+"->"+find(c,map,10));
+        }
+    }
+    
+    
+    public static int find(char key,LinkedHashMap<Character,Character> map,int bonus){
+        
+        if (bonus <= 0)  return 0;
+        
+        if (map.containsKey(map.get(key))) {
+             return bonus+find(map.get(key),map,bonus-1);
+        }
+        
+        return bonus;
+    }
+}
