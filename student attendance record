@@ -1,0 +1,28 @@
+import java.util.*;
+class Solution {
+    public static void main(String args[]){
+        Scanner sc = new Scanner (System.in);
+        String s = sc.nextLine();
+        System.out.println(checkRecord(s));
+    }
+    public static boolean checkRecord(String s) {
+        int countL =0,countA=0;
+        boolean checkLate=false;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='A'){
+                countA++;
+            }
+            if(i+2<s.length()){
+            if(s.charAt(i)=='L'&&s.charAt(i+1)=='L'&&s.charAt(i+2)=='L'){
+                checkLate=true;
+            }
+            }
+        }
+        if(countA>=2 || checkLate==true)
+            return false;
+        else 
+            return true;
+    }
+
+    
+}
