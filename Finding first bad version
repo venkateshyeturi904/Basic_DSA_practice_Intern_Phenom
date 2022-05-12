@@ -1,0 +1,45 @@
+class BadVersionImpl {
+    int badVersion;
+
+    // this is an mock an api which result us whether version is bad or not based on given number (input)
+    private boolean isBadVersion(int n) {
+        return badVersion <= n;
+    }
+
+    private int getRandom(int n) {
+        return 1 + (int)(Math.random() * ((n - 1) + 1));
+    }
+
+    public int getFirstBadVersion( int n) {
+        int val = getRandom(n);
+        badVersion = val;
+        System.out.println("badVersion " + badVersion);
+        
+        int low = 0, high = n;
+        
+        while (low <= high) {
+            // to avoid integer overflow
+            int mid = low + (high-low) / 2;
+            
+            if (isBadVersion(mid)) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return low;
+    }
+}
+
+public class BadVersion {
+
+
+    public static void main(String[] args) {
+        BadVersionImpl badVersion = new BadVersionImpl();
+
+        int input = 100;
+
+        System.out.println(badVersion.getFirstBadVersion(input));
+    }
+}
