@@ -1,4 +1,8 @@
 
+/*a series of github files are there in which one of the file is corrupted and so all the files next to that corrupted file are also corrupted. 
+Find the first bad version . */
+
+
 
 import java.util.Stack;
 
