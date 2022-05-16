@@ -2,24 +2,21 @@ import java.util.Stack;
 
 public class ClosedParanthesis {
 
-
-
-
     public static void main(String args[]){
         Stack<Character> stack = new Stack<>();
         boolean match = false;
         int count=0;
         boolean check=true;
-        String input = "{{(){(((}}";
+        String input = "(})";
 
         for(int i=0;i<input.length();i++){
         
             if(input.charAt(i)=='(' || input.charAt(i)=='{' || input.charAt(i)=='['){
-                stack.add(input.charAt(i));
+                stack.push(input.charAt(i));
                 match=true;
             }
             
-            else if(!stack.isEmpty()&&input.charAt(i)==')'){
+            if(!stack.isEmpty()&&input.charAt(i)==')'){
         
                 if(!match&&stack.peek()=='('){
                     stack.pop();
@@ -28,10 +25,11 @@ public class ClosedParanthesis {
                 
             }
             
-            else if(input.charAt(i)=='}'&&!stack.isEmpty()){
+            if(input.charAt(i)=='}'&&!stack.isEmpty()){
                 
                 if(!match&&stack.peek()=='{'){
-                    stack.pop();count++;
+                    stack.pop();
+                    count++;
                 }
                 
             }
