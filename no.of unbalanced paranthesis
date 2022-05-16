@@ -4,21 +4,21 @@ public class ClosedParanthesis {
 
     public static void main(String args[]){
         Stack<Character> stack = new Stack<>();
-        boolean match = false;
+        boolean insideIf = false;
         int count=0;
-        boolean check=true;
+        boolean checkValidity=true;
         String input = "(})";
 
         for(int i=0;i<input.length();i++){
         
             if(input.charAt(i)=='(' || input.charAt(i)=='{' || input.charAt(i)=='['){
                 stack.push(input.charAt(i));
-                match=true;
+                insideIf=true;
             }
             
             if(!stack.isEmpty()&&input.charAt(i)==')'){
         
-                if(!match&&stack.peek()=='('){
+                if(!insideIf&&stack.peek()=='('){
                     stack.pop();
                     count++;
                 }
@@ -27,7 +27,7 @@ public class ClosedParanthesis {
             
             if(input.charAt(i)=='}'&&!stack.isEmpty()){
                 
-                if(!match&&stack.peek()=='{'){
+                if(!insideIf&&stack.peek()=='{'){
                     stack.pop();
                     count++;
                 }
@@ -35,14 +35,14 @@ public class ClosedParanthesis {
             }
             
             else{
-                check = false;
+                checkValidity = false;
             }
             
-            match=false;
+            insideIf=false;
             
                
         }
-        if(stack.isEmpty() && check){
+        if(stack.isEmpty() && checkValidity){
             System.out.println("true");
         
         }
@@ -52,7 +52,6 @@ public class ClosedParanthesis {
     }
 
 }
-
 
 
 
