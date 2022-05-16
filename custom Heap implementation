@@ -3,16 +3,17 @@ import java.util.*;
 public class MaxHeap{
 
      static List<Integer> array = new ArrayList<>(Arrays.asList(4,8,1,99,7,54,10,876));
+
      
      public static void main(String []args){
-        System.out.println("maxHeap is :");
+        // System.out.println("maxHeap is :");
         System.out.println(maxHeap(array));
-        System.out.println("MinHeap is :");
+        // System.out.println("MinHeap is :");
         System.out.println(minHeap(array));
         insert(0);
         System.out.println(minHeap(array));
-        System.out.println(findMax());
-        System.out.println(findMin());
+        System.out.println("maximum ->"+findMax());
+        System.out.println("minimum ->"+findMin());
         
         
      }
@@ -20,7 +21,7 @@ public class MaxHeap{
          
          int n=array.size();
          for(int i = n/2 - 1 ; i>=0 ; i--){
-             recursion(array,i,n);
+             heapify(array,i,n,true);
          }
          return array;
         
@@ -30,50 +31,50 @@ public class MaxHeap{
         
          int n=array.size();
          for(int i = n/2 -1;i>=0;i--){
-             recursionMin(array,i,n);
+             heapify(array,i,n,false);
          }
          return array;
         
      }
-     public static void recursion(List<Integer> array , int i,int n){
+     public static void heapify(List<Integer> array , int i,int n,boolean isMax){
          int largest = i;
-         int left = 2*i+1;
-         int right = 2*i+2;
-         
-         
-         if(left<n&&array.get(largest)<array.get(left)){
-             largest=left;
-         }
-         
-         if(right<n&&array.get(largest)<array.get(right)){
-             largest=right;
-         }
-         
-         if(largest!=i){
-            
-            Collections.swap(array,largest,i);
-             recursion(array,largest,n);
-         }
-         
-         
-     }
-     public static void recursionMin(List<Integer> array,int i,int n){
          int smallest = i;
          int left = 2*i+1;
          int right = 2*i+2;
          
-         if(left<n&&array.get(smallest)>array.get(left)){
+         if(isMax){
+             if(left<n&&array.get(largest)<array.get(left)){
+                 largest=left;
+             }
+             
+             if(right<n&&array.get(largest)<array.get(right)){
+                 largest=right;
+             }
+             
+             if(largest!=i){
+                
+                Collections.swap(array,largest,i);
+                 heapify(array,largest,n,true);
+             }
+         }
+         else {
+             if(left<n&&array.get(smallest)>array.get(left)){
              smallest=left;
+             }
+             if(right<n&&array.get(smallest)>array.get(right)){
+                 smallest=right;
+             }
+             if(smallest!=i){
+                
+                Collections.swap(array,smallest,i);
+                 heapify(array,smallest,n,false);
+             }
          }
-         if(right<n&&array.get(smallest)>array.get(right)){
-             smallest=right;
-         }
-         if(smallest!=i){
-            
-            Collections.swap(array,smallest,i);
-             recursionMin(array,smallest,n);
-         }
+         
+         
+         
      }
+    
      
      public static void insert(int ins){
          array.add(ins);
