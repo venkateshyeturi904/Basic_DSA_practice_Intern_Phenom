@@ -1,0 +1,68 @@
+/*
+print the deepest node in a tree
+*/
+
+public class HelloWorld{
+
+    public static void main(String []args){
+        
+        Node node = new Node('a');
+        node.left= new Node('b');
+        node.right=new Node('c');
+        node.left.left=new Node('d');
+        node.left.right=new Node('e');
+        node.left.right.left=new Node('f');
+        node.left.right.right=new Node('g');
+        node.left.right.left.left=new Node('h');
+        node.left.right.left.right=new Node('i');
+        node.left.right.left.right.left = new Node('j');
+        node.left.right.left.right.right=new Node('k');
+        node.left.right.left.right.right.left = new Node('l');
+        node.left.right.left.right.right.right= new Node('m');
+        
+        node.left.right.left.right.right.right.right= new Node('n');
+        
+        int height = findHeight(node);
+        
+        System.out.println(getLastNode(node,height));
+        
+    }
+    
+    public static int findHeight(Node node){
+        if(node==null){
+            return -1;
+        }
+        return Math.max(findHeight(node.left),findHeight(node.right))+1;
+    }
+    public static char getLastNode(Node node,int height){
+        int level=0;
+        while(height>level){
+            
+            
+                level++;
+                
+                
+                if(findHeight(node.left)>findHeight(node.right))
+                    node=node.left;
+                else 
+                    node=node.right;
+            
+            
+            
+        }
+        return node.data;
+    }
+    
+}
+
+class Node{
+    char data;
+    Node left;
+    Node right;
+    
+    Node(char data){
+        this.data=data;
+        left = null;
+        right = null;
+    }
+}
