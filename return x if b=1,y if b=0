@@ -1,0 +1,14 @@
+/*
+Given three 32-bit integers x, y, and b, return x if b is 1 and y if b is 0, using only mathematical or bit operations. You can assume b can only be 1 or 0.
+*/
+
+public class Bit{
+    public static void main(String args[]){
+        int x=78,y=678;
+        int b=1;    //0 or 1
+        System.out.println(function(x,y,b));
+    }
+    public static int function(int x,int y,int b){
+        return b*x+(1-b)*y;
+    }
+}
