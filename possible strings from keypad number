@@ -1,0 +1,76 @@
+/*
+Given a mapping of digits to letters (as in a phone number), and a digit string, return all possible letters the number could represent. You can assume each valid number in the mapping is a single digit.
+
+
+*/
+
+import java.util.*;
+public class HelloWorld{
+
+     public static void main(String []args){
+        Map<String,List<String>> map = new HashMap<>();
+        map.put("2",new ArrayList<String>(Arrays.asList("a","b","c")));
+        map.put("3",new ArrayList<String>(Arrays.asList("d","e","f")));
+        map.put("4",new ArrayList<String>(Arrays.asList("g","h","i")));
+        map.put("5",new ArrayList<String>(Arrays.asList("j","k","l")));
+        map.put("6",new ArrayList<String>(Arrays.asList("m","n","o")));
+        map.put("7",new ArrayList<String>(Arrays.asList("p","q","r","s")));
+        map.put("8",new ArrayList<String>(Arrays.asList("t","u","v")));
+        map.put("7",new ArrayList<String>(Arrays.asList("w","x","y","z")));
+        List<String> list = new ArrayList<>();
+        List<String> list1 = new ArrayList<>();
+        
+        
+        String s = "2455";
+
+        
+        list=map.get(""+s.charAt(0));
+        
+        
+                             
+            for(int i=1;i<s.length();i++){
+                
+                    
+                    list.addAll(list1);
+                    list1.clear();
+                    
+                    
+            
+                for(String s2 : map.get(""+s.charAt(i))){
+                    
+                    
+                    for(String s1 : list){
+                        
+                        s1=s1+s2;
+                        
+                        list1.add(s1);
+                    }
+                }
+                list.clear();
+            }
+    
+        System.out.println(s.length()>1?list1:list);
+        
+        
+        
+            
+            
+        
+            
+                
+                
+                
+                
+                
+            
+            
+            
+            
+        
+        
+        
+        
+        
+        
+     }
+}
