@@ -1,0 +1,17 @@
+"""What does the below code snippet print out? How can we fix the anonymous functions to behave as we'd expect?
+
+functions = []
+for i in range(10):
+    functions.append(lambda : i)
+
+for f in functions:
+    print(f())
+    
+"""
+# It prints all 9s 10 times as we are calling the function and the last updated value is 9.
+functions = []
+for i in range(10):
+    functions.append((lambda : i)())
+
+for f in functions:
+    print(f)
