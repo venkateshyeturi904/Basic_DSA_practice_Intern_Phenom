@@ -1,0 +1,32 @@
+/*
+Assume you have access to a function toss_biased() which returns 0 or 1 with a probability that's not 50-50 (but also not 0-100 or 100-0). You do not know the bias of the coin.
+
+Write a function to simulate an unbiased coin toss.
+*/
+
+import java.util.Random;
+
+public class RandomExample{
+    public static void main(String args[]){
+        
+        System.out.println(unBiasedNum());
+    }
+    public static int biasedNum(){
+        Random rand = new Random();
+        return rand.nextInt(2);
+    }
+    public static int unBiasedNum(){
+        int i=biasedNum();
+        int j=biasedNum();
+        
+        
+        
+        if(i==0&&j==1 || i==1&& j==0 || i==0&&j==0){
+            return 0;
+        }
+        
+    
+        return 1;
+    }
+}
+
