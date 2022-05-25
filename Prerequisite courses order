@@ -1,0 +1,58 @@
+/*We're given a hashmap associating each courseId key with a list of courseIds values, which represents that the prerequisites of courseId are courseIds. Return a sorted ordering of courses such that we can finish all courses.
+
+Return null if there is no such ordering.
+
+For example, given {'CSC300': ['CSC100', 'CSC200'], 'CSC200': ['CSC100'], 'CSC100': []}, should return ['CSC100', 'CSC200', 'CSCS300'].
+*/
+import java.util.*;
+public class PreRequisite{
+    public static void main(String args[]){
+        Map<String,List<String>> map = new LinkedHashMap<>();
+        Map<String,Integer> numberOfPre = new LinkedHashMap<>();
+        // map.put("CSC300",Arrays.asList("CSC100","CSC200"));
+        // map.put("CSC200",Arrays.asList("CSC100"));
+        // map.put("CSC100",Arrays.asList( ));
+        map.put("Frontend",Arrays.asList("React","Angular"));
+        map.put("React",Arrays.asList("JS"));
+        map.put("JS",Arrays.asList( "CSS"));
+        map.put("CSS",Arrays.asList( "HTML"));
+        map.put("HTML",Arrays.asList());
+        int count=0;
+        for(String key : map.keySet()){
+            count=0;
+            numberOfPre.put(key,getNumber(map,key,count));
+        }
+        
+        
+        ArrayList<Integer> values = new ArrayList<>(numberOfPre.values());
+        Collections.sort(values);
+        
+        
+        
+        for(int i : values){
+            for(String s : numberOfPre.keySet()){
+                if(numberOfPre.get(s)==i){
+                    System.out.println(s);
+                }
+            }
+            
+        }
+        
+        
+        
+        
+        
+    }
+    public static int getNumber(Map<String,List<String>> map,String key, int count){
+        
+        for(String s : map.get(key)){
+            if(map.containsKey(s)){
+                count++;
+                count=count+getNumber(map,s,count);
+            }else{
+                return count;
+            }
+        }
+        return count;
+    }
+}
