@@ -1,0 +1,48 @@
+/*
+Given a list of possibly overlapping intervals, return a new list of intervals where all overlapping intervals have been merged.
+
+The input list is not necessarily ordered in any way.
+
+For example, given [(1, 3), (5, 8), (4, 10), (20, 25)], you should return [(1, 3), (4, 10), (20, 25)].
+*/
+
+import java.util.*;
+public class HelloWorld{
+
+     public static void main(String []args){
+        
+        List<Pair> list = new ArrayList<>();
+        
+        list.add(new Pair(1,3));
+        list.add(new Pair(5,8));
+        list.add(new Pair(4,10));
+        list.add(new Pair(20,25));
+        
+        int n=list.size();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(list.get(i).a>list.get(j).a && list.get(i).b<list.get(j).b){
+                    list.remove(i);
+                    n--;
+                    
+                }
+            }
+            
+        }
+        
+        for(Pair p : list){
+            System.out.println(p.a+" "+p.b);
+        }
+        
+        
+     }
+}
+
+class Pair{
+    int a;
+    int b;
+    Pair(int a,int b){
+        this.a=a;
+        this.b=b;
+    }
+}
