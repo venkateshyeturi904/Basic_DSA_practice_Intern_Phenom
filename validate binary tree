@@ -1,0 +1,46 @@
+/*Determine whether a tree is a valid binary search tree.
+A binary search tree is a tree with two children, left and right, and satisfies the constraint that the key in the left child must be less than or equal to the root and the key in the right child must be greater than or equal to the root.
+*/
+
+public class ValidBinaryTree{
+    public static void main(String args[]){
+        Node node = new Node(10);
+        node.left = new Node(7);
+        node.right = new Node(12);
+        node.left.left=new Node(6);
+        node.left.right=new Node(9);
+        node.right.left= new Node(11);
+        node.right.right=new Node(13);
+        
+        System.out.println(check(node));
+        
+    }
+    public static boolean check(Node node){
+        if(node==null){
+            return true;
+        }
+        if(node.left!=null && node.left.data>node.data){
+            return false;
+        }
+        if(node.right!=null && node.right.data<node.data){
+            return false;
+        
+        }
+        if(!check(node.left) || !check(node.right)){
+            return false;
+        }
+        return true;
+    }
+    
+    
+}
+class Node{
+    int data;
+    Node left;
+    Node right;
+    public Node(int data){
+        this.data=data;
+        this.left = null;
+        this.right= null;
+    }
+}
