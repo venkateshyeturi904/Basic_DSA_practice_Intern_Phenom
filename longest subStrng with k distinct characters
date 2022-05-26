@@ -1,0 +1,50 @@
+/* Given an integer k and a string s, find the length of the longest substring that contains at most k distinct characters.
+
+For example, given s = "abcba" and k = 2, the longest substring with k distinct characters is "bcb".*/
+import java.util.*;
+public class HelloWorld{
+
+     public static void main(String []args){
+         
+         String s = "jedjhejfjdnfnjnrjgjkgmfvfvklkkrlkglrklgklkglkkgkglkrlklrkrlkwqjwdjedjfndfndmnmnmnmfnmfjwjqrjkewrmklqe";
+         int k=2;
+         boolean found=false;
+         int max=0;
+         
+         for(int i=s.length();i>0;i--){
+             for(String s1 : getSubStrings(s,i)){
+                 if(match(s1,k)){
+                     System.out.println(s1);
+                     found=true;
+                     break;
+                 }
+                 
+             }
+             if(found){
+                 break;
+             }
+         }
+         
+       
+         
+     }
+     public static List<String> getSubStrings(String s,int k){
+         List<String> list = new ArrayList<>();
+         for(int i=0;i<s.length();i++){
+             for(int j=i+k;j<s.length();j++){
+                 list.add(s.substring(i,j));
+             }
+         }
+         return list;
+         
+     }
+     
+     public static boolean match(String s,int k){
+         Set<Character> set = new HashSet<>();
+         
+         for(int i=0;i<s.length();i++){
+             set.add(s.charAt(i));
+         }
+         return k==set.size()?true:false;
+     }
+}
