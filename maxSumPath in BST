@@ -1,0 +1,74 @@
+/*
+Given a binary tree of integers, find the maximum path sum between two nodes. The path must go through at least one node, and does not need to go through the root.
+*/
+
+
+import java.util.*;
+import java.lang.Number;
+
+public class MaxSumPath{
+    
+    static int res;
+    public static void main(String args[]){
+        Node node = new Node(1);
+        node.left = new Node(8);
+        node.right = new Node(6);
+        node.left.left = new Node(30);
+        node.left.right = new Node(0);
+        
+         System.out.println(maxSum(node));
+        // maxSum(node);
+    }
+    
+    public static int maxSum(Node node){
+        
+        Res res = new Res();
+        res.value = Integer.MIN_VALUE;
+        maxSumPath(node,res);
+        return res.value;
+    }
+    
+    public static int maxSumPath(Node node,Res res){
+        
+        if(node==null){
+            return 0;
+        }
+        
+        
+        int l = maxSumPath(node.left,res);
+        
+        int r = maxSumPath(node.right,res);
+        
+        int maxPath = Math.max(node.data+Math.max(l,r),node.data);
+        
+        // System.out.println(maxPath);
+        
+        int maxTop = Math.max(maxPath,l+r+node.data);
+        
+        // System.out.println(maxTop);
+        
+        res.value=Math.max(res.value,maxTop);
+        
+        // System.out.println(res);
+        
+        // System.out.println(maxPath);
+        
+        return maxPath;
+    }
+}
+
+class Res{
+    public int value;
+}
+
+class Node{
+    int data;
+    Node left;
+    Node right;
+    
+    Node(int data){
+        this.data= data;
+        this.left = null;
+        this.right =  null;
+    }
+}
