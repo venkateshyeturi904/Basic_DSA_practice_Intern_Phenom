@@ -1,0 +1,38 @@
+package practice;
+import java.util.*;
+
+import java.util.HashSet;
+
+public class LongestSubSequence {
+    /* Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+
+For example, given [100, 4, 200, 1, 3, 2], the longest consecutive element sequence is [1, 2, 3, 4]. Return its length: 4.
+
+Your algorithm should run in O(n) complexity.*/
+
+        public static void main(String []args){
+            int [] array = {100,1,2,102,101};
+            System.out.println(count(array,0,0));
+        }
+        public static int count(int[] array,int ans,int init){
+            HashSet<Integer> set = new HashSet<>();
+            for(int i=0;i<array.length;i++){
+                set.add(array[i]);
+            }
+            for(int i=0;i<array.length;i++){
+                int j=0;
+                if(!set.contains(array[i]-1)){
+                    j=array[i];
+                    init = j;
+                }
+                while(set.contains(j+1)){
+                    ++j;
+                }
+                ans=Math.max(ans,j-init+1);
+
+            }
+            return ans;
+        }
+
+}
+
