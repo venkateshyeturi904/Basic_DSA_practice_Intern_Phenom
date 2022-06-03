@@ -1,0 +1,36 @@
+/*
+Given a list of integers and a number K, return which contiguous elements of the list sum to K.
+
+For example, if the list is [1, 2, 3, 4, 5] and K is 9, then it should return [2, 3, 4], since 2 + 3 + 4 = 9.
+ */
+package DCP;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ContigousElementsInListSumToK {
+    public static void main(String args[]){
+        List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+        List<Integer> list1 = new ArrayList<>();
+        int k=12,sum=0,j=0;
+        boolean found = false ;
+        for(int i=0;i<list.size();i++){
+            sum=0;
+            list1.clear();
+            for(j=i;j<list.size()&&sum<=k;j++){
+                sum=sum+list.get(j);
+                list1.add(list.get(j));
+                if(sum==k){
+                    System.out.println(list1);
+                    found=true;
+                    break;
+                }
+
+            }
+            if(found){
+                break;
+            }
+        }
+    }
+}
