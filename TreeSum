@@ -1,0 +1,24 @@
+import java.util.*;
+
+/**
+ * public class Tree {
+ *   int val;
+ *   Tree left;
+ *   Tree right;
+ * }
+ */
+class Solution {
+    public int solve(Tree root) {
+        return traverse(root);
+        
+    }
+    public int traverse(Tree root){
+        if(root==null){
+            return 0;
+        }
+
+
+        return root.val+traverse(root.left)+traverse(root.right);
+        
+    }
+}
